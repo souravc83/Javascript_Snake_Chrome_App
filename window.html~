@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+
+	<div id=d1 style="position:absolute; top:50px;left:0px;z-index:1">
+  <canvas id="settingcanvas" width="200" height="600"
+  		style="border:5px solid #99CCFF;">
+  		Your browser does not support HTML5 Canvas.
+  </canvas>
+  </div>  
+  
+  <div id=d2 style="position:absolute; top:50px;left:210px;z-index:2">
+  <canvas id="maincanvas" width="1000" height="600">
+  		Your browser does not support HTML5 Canvas.
+  </canvas>
+  </div>
+  
+    <script type="text/javascript" src="window.js">
+		
+	</script>
+  </body>
+</html>

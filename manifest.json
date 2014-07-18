@@ -1,0 +1,12 @@
+{
+  "name": "Snake",
+  "short_name": "Snake",
+  "description": "The Classic Snake Game, with modern features",
+  "version": "0.3",
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+  "icons": { "16": "snake_16.png", "128": "snake_128.png" }
+}

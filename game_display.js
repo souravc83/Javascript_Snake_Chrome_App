@@ -1,0 +1,103 @@
+
+
+window.addEventListener("keydown", checkKeyPressed, false);
+
+function checkKeyPressed(e)
+{
+	if(e.keyCode==39)//Right
+	{
+		curr_key='r';
+	}
+	if(e.keyCode==40)//Down
+	{
+		curr_key='d';
+	}
+	if(e.keyCode==38)//Up
+	{
+		curr_key='u';
+	}
+	if(e.keyCode==37)//Left
+	{
+		curr_key='l';
+	}
+}
+
+
+function drawcircle(x1,y1)
+{
+	ctx.fillStyle='#0079B8';//blue
+	ctx.beginPath();
+	ctx.arc(x1,y1,blocksize/2,0,2*Math.PI);
+	ctx.fill();
+	ctx.strokeStyle="white"
+	ctx.stroke();
+}
+
+function drawsnake(snake1)
+{
+    var N= snake1.coords.length;
+    for (var i=0;i<N;i++)
+    {
+        var center=snake1.coords[i];
+        drawcircle(center.x,center.y);
+    }
+}
+
+function draw_wall()
+{
+    ctx.fillStyle='black';
+    ctx.fillRect(0,0,blocksize/4,high);//left
+    ctx.fillRect(wide-blocksize/4,0,blocksize/4,high);//right
+    ctx.fillRect(0,0,wide,blocksize/4);//top
+    ctx.fillRect(0,high-blocksize/4,wide,blocksize/4)//down
+    
+    
+}
+
+function background_fill()
+{
+	ctx.fillStyle='#EFEFEF';
+	ctx.fillRect(0,0,wide,high);
+}
+
+function limits(x1,y1)
+{
+	if(x1>wide)
+		x1=x1%wide;
+	if(x1<0)
+		x1=x1+wide;
+	
+	if(y1>high)
+		y1=y1%high;
+	if(y1<0)
+		y1=y1+high;
+	
+}
+
+function drawfood(pair1)
+{
+    ctx.fillStyle='#FF0000';
+	ctx.fillRect(pair1.x-blocksize/2,pair1.y-blocksize/2,blocksize,blocksize);
+    //console.log(pair1.x);
+    //console.log(pair1.y);
+    
+    return;
+}
+
+function gamemain()
+{
+	background_fill();
+    if(wall_none==false)
+        draw_wall();
+	
+	drawsnake(snake1);
+    snake1.snakemove(curr_key);
+    drawfood(food1.getfoodloc());
+    game1.atefood();
+    game1.check_miss();
+    
+    
+    score=game1.getscore();
+
+    
+}
